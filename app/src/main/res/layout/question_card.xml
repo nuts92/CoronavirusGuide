@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    app:cardCornerRadius="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/question_card_background"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:gravity="center"
+            android:minHeight="70dp"
+            android:orientation="horizontal"
+            tools:ignore="UseCompoundDrawables">
+
+            <TextView
+                android:id="@+id/card_question_view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|start"
+                android:layout_weight="1"
+                android:fontFamily="@font/alfa_slab_one"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                tools:text="What will happen if I do that?" />
+
+            <ImageView
+                android:id="@+id/card_arrow_button"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:src="@drawable/ic_expand"
+                tools:ignore="ContentDescription" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/card_answer_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:background="@drawable/btn_gradient_background"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/card_answer_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:gravity="center"
+                tools:text="What will happen if I do that?"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/share_button"
+                android:layout_width="350dp"
+                android:layout_height="100dp"
+                android:layout_below="@id/card_answer_view"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/share_button"
+                android:visibility="gone"
+                tools:ignore="ContentDescription" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

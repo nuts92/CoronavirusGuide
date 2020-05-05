@@ -1,0 +1,72 @@
+<resources>
+    <string name="app_name">Coronavirus Guide</string>
+
+    <!-- A list of Strings for the Navigation Drawer Menu Items -->
+    <string name="menu_start_quiz">Test Your Knowledge</string>
+    <string name="menu_symptoms">COVID-19 Symptoms</string>
+    <string name="menu_prevention_guide">Prevention Guide</string>
+    <string name="menu_quiz_list">Quiz Results</string>
+    <string name="menu_manage_stress">Manage Stress</string>
+    <string name="menu_common_questions">Common Questions</string>
+    <string name="menu_profile">Profile</string>
+
+    <!-- A list of Strings for the SignUp Authentication Screen-->
+    <string name="sign_up_welcome_title">Welcome to COVID-19 Guide</string>
+    <string name="sign_up_slogan_title">Join Us in Our Fight Against the CoronaVirus</string>
+    <string name="continue_with_google_button">Continue with Google</string>
+    <string name="continue_with_email_button">Continue with Email</string>
+
+    <!-- A list of Strings for the UserProfileFragment Screen -->
+    <string name="user_profile_self_intoduction">I\'m a Fighter and believe in that this virus will make us as humanity stronger.</string>
+    <string name="user_profile_update_button">Update</string>
+    <string name="user_profile_logout_button">Log Out</string>
+
+    <!-- A list of Strings for the EditProfileFragment Screen-->
+    <string name="edit_profile_fragment_title">Update Your Profile</string>
+    <string name="edit_profile_fragment_name_hint">Display Name</string>
+    <string name="edit_profile_fragment_introduction_hint">Intro about yourself (Max 3 Lines)</string>
+    <string name="edit_profile_fragment_save_button">Save</string>
+
+    <!-- A list of Strings for the StartQuizFragment Screen -->
+    <string name="quiz_introduction_part_one">The COVID-19 Virus has triggered a pandemic of pneumonia-causing disease resulting in an intense strain on health systems and financial markets, and causing a global economic crisis.</string>
+    <string name="quiz_introduction_part_two">To protect yourself and your loved ones, take this quiz and check if you\'re up to date with the latest information about COVID-19.</string>
+    <string name="start_quiz_button">Start the Quiz</string>
+    <string name="start_quiz_title">The CoronaVirus Epidemic</string>
+
+
+    <!-- A list of Strings for fragments' and activities' titles that will be used in the navigation graph so that they can be displayed-->
+    <!--    <string name="fragment_new_quiz_title">Test Your Knowledge</string>-->
+    <!--    <string name="fragment_user_profile_title">Profile</string>-->
+    <!--    <string name="prevention_guide_activity_title">Prevention Guide</string>-->
+    <!--    <string name="fragment_saved_quizzes_title">Saved Quizzes</string>-->
+    <string name="fragment_edit_profile_title">Update Your Profile</string>
+    <string name="fragment_questions_title">COVID-19 Quiz</string>
+    <string name="fragment_result_title">Your Score</string>
+
+    <!-- A list of Strings for the Introduction Screen -->
+    <string name="introduction_button">I Want To Know More</string>
+    <string name="introduction_question_one">Should I wear a Face Mask?</string>
+    <string name="introduction_question_two">Can my dog give me the virus?</string>
+    <string name="introduction_question_three">How often should I wash my hand?</string>
+
+    <!-- A String for the Prevention Guide Screen -->
+    <string name="prevention_guide_button">Ok, Got It</string>
+
+    <!-- A String for the COVID-19 Symptoms Screen -->
+    <string name="symptoms_button">Ok, Got It</string>
+
+    <!-- A String for the Manage COVID-19 Stress Screen -->
+    <string name="manage_stress_button">Ok, Got It</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="answer_confirm_button">Confirm</string>
+    <string name="question_explanation_button">Explanation</string>
+    <string name="edit_text_hint">Enter Your Answer Here</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+
+
+</resources>
+
+

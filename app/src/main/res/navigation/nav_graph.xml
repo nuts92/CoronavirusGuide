@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/nav_start_quiz">
+
+    <fragment
+        android:id="@id/nav_start_quiz"
+        android:name="com.example.android.coronavirusguide.StartQuizFragment"
+        android:label="@string/menu_start_quiz"
+        tools:layout="@layout/fragment_start_quiz">
+
+        <action
+            android:id="@+id/action_nav_start_quiz_to_questionsFragment"
+            app:destination="@id/questionsFragment" />
+    </fragment>
+
+    <activity
+        android:id="@id/nav_symptoms"
+        android:name="com.example.android.coronavirusguide.activities.SymptomsActivity"
+        android:label="@string/menu_symptoms"
+        tools:layout="@layout/activity_symptoms" />
+
+    <activity
+        android:id="@id/nav_prevention_guide"
+        android:name="com.example.android.coronavirusguide.activities.PreventionGuideActivity"
+        android:label="@string/menu_prevention_guide"
+        tools:layout="@layout/activity_prevention_guide" />
+
+    <activity
+        android:id="@id/nav_manage_stress"
+        android:name="com.example.android.coronavirusguide.activities.ManageStressActivity"
+        android:label="@string/menu_manage_stress"
+        tools:layout="@layout/activity_manage_stress" />
+
+    <fragment
+        android:id="@id/nav_common_questions"
+        android:name="com.example.android.coronavirusguide.CommonQuestionsFragment"
+        android:label="@string/menu_common_questions"
+        tools:layout="@layout/fragment_common_questions" />
+
+    <fragment
+        android:id="@id/nav_profile"
+        android:name="com.example.android.coronavirusguide.UserProfileFragment"
+        android:label="@string/menu_profile"
+        tools:layout="@layout/fragment_user_profile">
+        <action
+            android:id="@+id/action_nav_profile_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.example.android.coronavirusguide.EditProfileFragment"
+        android:label="@string/fragment_edit_profile_title"
+        tools:layout="@layout/fragment_edit_profile">
+        <action
+            android:id="@+id/action_editProfileFragment_to_nav_profile"
+            app:destination="@id/nav_profile"
+            app:popUpTo="@+id/editProfileFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/questionsFragment"
+        android:name="com.example.android.coronavirusguide.QuestionsFragment"
+        android:label="@string/fragment_questions_title"
+        tools:layout="@layout/fragment_questions">
+
+        <action
+            android:id="@+id/action_questionsFragment_to_resultFragment"
+            app:destination="@id/resultFragment"
+            app:popUpTo="@+id/questionsFragment"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="com.example.android.coronavirusguide.ResultFragment"
+        android:label="@string/fragment_result_title"
+        tools:layout="@layout/fragment_result">
+        <action
+            android:id="@+id/action_resultFragment_to_nav_start_quiz"
+            app:destination="@id/nav_start_quiz"
+            app:popUpTo="@+id/resultFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+
+</navigation>

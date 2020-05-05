@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_purple"
+    android:orientation="vertical"
+    tools:context=".activities.SymptomsActivity">
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/symptoms_pager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="16dp"
+        android:layout_weight="1" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/symptoms_indicator"
+        android:layout_width="match_parent"
+        android:layout_height="16dp"
+        android:layout_gravity="center|bottom"
+        android:layout_marginBottom="16dp"
+        app:tabBackground="@drawable/pager_selector_indicator"
+        app:tabGravity="center"
+        app:tabIndicatorHeight="0dp" />
+
+    <Button
+        android:id="@+id/symptoms_button"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="36dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginRight="36dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/btn_gradient_background"
+        android:fontFamily="@font/alfa_slab_one"
+        android:padding="4dp"
+        android:text="@string/symptoms_button"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="24sp" />
+
+</LinearLayout>

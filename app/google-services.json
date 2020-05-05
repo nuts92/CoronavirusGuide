@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "431176815091",
+    "firebase_url": "https://coronavirus-guide-e53de.firebaseio.com",
+    "project_id": "coronavirus-guide-e53de",
+    "storage_bucket": "coronavirus-guide-e53de.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:431176815091:android:95aef9161500d86f7ac286",
+        "android_client_info": {
+          "package_name": "com.example.android.coronavirusguide"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "431176815091-nl14bq2l2djs5h1rlmroknf796k0f86d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.android.coronavirusguide",
+            "certificate_hash": "0090b490c4628f037f86f24f1b4d462bc2ee9b6b"
+          }
+        },
+        {
+          "client_id": "431176815091-hrtfeqebpkat9btb0m3r8fep6sscmov1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIOfCL1ZtF4L2qXvgoZIUwPEtFxfooLKw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "431176815091-hrtfeqebpkat9btb0m3r8fep6sscmov1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

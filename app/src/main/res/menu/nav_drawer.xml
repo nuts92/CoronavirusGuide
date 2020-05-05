@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_start_quiz"
+            android:title="@string/menu_start_quiz" />
+
+        <item
+            android:id="@+id/nav_symptoms"
+            android:title="@string/menu_symptoms" />
+
+        <item
+            android:id="@+id/nav_prevention_guide"
+            android:title="@string/menu_prevention_guide" />
+
+        <item
+            android:id="@+id/nav_manage_stress"
+            android:title="@string/menu_manage_stress"/>
+
+        <item
+            android:id="@+id/nav_saved_quizzes"
+            android:title="@string/menu_quiz_list" />
+
+        <item
+            android:id="@+id/nav_common_questions"
+            android:title="@string/menu_common_questions"/>
+
+
+        <item
+            android:id="@+id/nav_profile"
+            android:title="@string/menu_profile" />
+
+    </group>
+
+</menu>
