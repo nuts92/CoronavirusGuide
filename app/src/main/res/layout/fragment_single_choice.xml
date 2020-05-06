@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SingleChoiceFragment">
+    tools:context=".quiz_flow_fragments.SingleChoiceFragment">
 
     <TextView
         android:id="@+id/single_choice_question"
@@ -17,14 +17,13 @@
         android:layout_marginRight="4dp"
         android:fontFamily="@font/alfa_slab_one"
         android:gravity="center"
+        android:textColor="@color/purple"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="What is going to happen if something happened?"
-        android:textColor="@color/purple"
-        />
+        tools:text="What is going to happen if something happened?" />
 
     <RadioGroup
         android:id="@+id/radio_group"
@@ -38,39 +37,39 @@
         android:gravity="start"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/single_choice_question" >
+        app:layout_constraintTop_toBottomOf="@+id/single_choice_question">
 
         <RadioButton
             android:id="@+id/radio_button_one"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Option One"
+            android:fontFamily="@font/alfa_slab_one"
             android:textColor="@color/black"
-            android:fontFamily="@font/alfa_slab_one"/>
+            tools:text="Option One" />
 
         <RadioButton
             android:id="@+id/radio_button_two"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Option Two"
+            android:fontFamily="@font/alfa_slab_one"
             android:textColor="@color/black"
-            android:fontFamily="@font/alfa_slab_one"/>
+            tools:text="Option Two" />
 
         <RadioButton
             android:id="@+id/radio_button_three"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Option Three"
+            android:fontFamily="@font/alfa_slab_one"
             android:textColor="@color/black"
-            android:fontFamily="@font/alfa_slab_one"/>
+            tools:text="Option Three" />
 
         <RadioButton
             android:id="@+id/radio_button_four"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Option Four"
+            android:fontFamily="@font/alfa_slab_one"
             android:textColor="@color/black"
-            android:fontFamily="@font/alfa_slab_one"/>
+            tools:text="Option Four" />
 
     </RadioGroup>
 

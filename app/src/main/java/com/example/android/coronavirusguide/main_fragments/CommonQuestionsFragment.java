@@ -1,4 +1,4 @@
-package com.example.android.coronavirusguide;
+package com.example.android.coronavirusguide.main_fragments;
 
 
 import android.content.Intent;
@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.android.coronavirusguide.R;
 import com.example.android.coronavirusguide.adapters.CardAdapter;
 import com.example.android.coronavirusguide.data_models.CommonQuestionsData;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
@@ -21,20 +22,18 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
-
 /**
- * A simple {@link Fragment} subclass.
+ * CommonQuestionsFragment subclass displays a list of all the Common Questions regarding the COVID-19 Virus in the form of cards
+ * ordered by the index where the user can share the information of any of these cards.
  */
 public class CommonQuestionsFragment extends Fragment {
 
+    //Declaring an instance of the CardAdapter
     private CardAdapter cardAdapter;
-
-    private SearchView searchView;
 
     public CommonQuestionsFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -43,19 +42,23 @@ public class CommonQuestionsFragment extends Fragment {
         // Inflate the layout for this fragment
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_common_questions, container, false);
 
+        //Declaring and initializing the recyclerView Object Variable.
         RecyclerView recyclerView = rootView.findViewById(R.id.common_questions_recycler_view);
 
+        //Declaring and initializing an instance of Firestore database.
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+        //Declaring and initializing an instance of a CollectionReference called questionsCollectionRef which references a collection called
+        //"Common Questions" that stores all the common questions and their answers.
         CollectionReference questionsCollectionRef = db.collection("Common Questions");
 
-        //Declaring and initializing a query object that displays the data from Firestore ordered by timestamp which means
-        //the saved game with the latest date is displayed first
+        //Declaring and initializing a query object that displays the data from Firestore ordered by index where index represents the question number
+        //so question one has an index of 1 and question two has an index of 2, etc.
         Query query = questionsCollectionRef.orderBy("index", Query.Direction.ASCENDING);
 
         //configure the adapter by building FirestoreRecyclerOptions, Configure recycler adapter options:
         // query is the Query object defined above.
-        // SavedGame.class instructs the adapter to convert each DocumentSnapshot to a SavedGame object
+        // CommonQuestionsData.class instructs the adapter to convert each DocumentSnapshot to a CommonQuestionsData object
         FirestoreRecyclerOptions<CommonQuestionsData> options = new FirestoreRecyclerOptions.Builder<CommonQuestionsData>()
                 .setQuery(query, CommonQuestionsData.class)
                 .build();
@@ -72,19 +75,19 @@ public class CommonQuestionsFragment extends Fragment {
         //Attaching the cardAdapter to the recyclerView with the setAdapter() method.
         recyclerView.setAdapter(cardAdapter);
 
-
-        //Setting an OnItemClickListener on the cardAdapter that determines the behavior that will happen when the user
-        // clicks on the shareButton
+        //Setting an OnItemClickListener to the cardAdapter that determines the behavior that will happen when the user
+        //clicks on the shareButton
         cardAdapter.setOnItemClickListener(new CardAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
 
-                //Declaring and initializing a savedGame object that is created from the documentSnapshot
+                //Declaring and initializing a CommonQuestionsData object that is created from the documentSnapshot
                 CommonQuestionsData questionsData = documentSnapshot.toObject(CommonQuestionsData.class);
 
+                //Declaring and initializing a message that will be shared when the user clicks on the shareButton
                 String shareMessage = null;
 
-                if(questionsData != null) {
+                if (questionsData != null) {
 
                     String question = questionsData.getQuestion();
 

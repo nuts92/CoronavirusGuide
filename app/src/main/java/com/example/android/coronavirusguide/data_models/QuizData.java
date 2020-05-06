@@ -1,5 +1,11 @@
 package com.example.android.coronavirusguide.data_models;
 
+/**
+ * This class is a Data Model Class that stores the Quiz Data and it follows the JavaBean naming pattern which allows Firestore
+ * to automatically map values when getting and setting data. The rules that the pattern follows are that:
+ * Getter and Setter methods are defined which are strictly named to what variable they correspond to (for example: getName() provides the name field).
+ * An extra empty constructor is also defined which lets Firestore do the automatic data mapping.
+ */
 public class QuizData {
 
     private String question;
@@ -23,7 +29,7 @@ public class QuizData {
     private String category;
 
     public QuizData() {
-
+        //empty constructor is required for Firestore's automatic data mapping.
     }
 
     public QuizData(String question, String optionOne, String optionTwo, String optionThree, String optionFour, String answer, String multipleChoiceAnswerOne, String multipleChoiceAnswerTwo, String explanation, String category) {

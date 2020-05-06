@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MultipleChoiceFragment">
-
+    tools:context=".quiz_flow_fragments.MultipleChoiceFragment">
 
     <TextView
         android:id="@+id/multiple_choice_question"
@@ -18,26 +17,26 @@
         android:layout_marginRight="4dp"
         android:fontFamily="@font/alfa_slab_one"
         android:gravity="center"
+        android:textColor="@color/purple"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="What is going to happen if? Choose 2"
-        android:textColor="@color/purple"/>
+        tools:text="What is going to happen if? Choose 2" />
 
     <CheckBox
         android:id="@+id/check_box_one"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/alfa_slab_one"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/multiple_choice_question"
-        tools:text="Option One"
-        android:textColor="@color/black"
-        android:fontFamily="@font/alfa_slab_one" />
+        tools:text="Option One" />
 
     <CheckBox
         android:id="@+id/check_box_two"
@@ -45,11 +44,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
+        android:fontFamily="@font/alfa_slab_one"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/check_box_one"
-        tools:text="Option Two"
-        android:textColor="@color/black"
-        android:fontFamily="@font/alfa_slab_one" />
+        tools:text="Option Two" />
 
     <CheckBox
         android:id="@+id/check_box_three"
@@ -57,11 +56,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
+        android:fontFamily="@font/alfa_slab_one"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/check_box_two"
-        tools:text="Option Three"
-        android:textColor="@color/black"
-        android:fontFamily="@font/alfa_slab_one" />
+        tools:text="Option Three" />
 
     <CheckBox
         android:id="@+id/check_box_four"
@@ -69,11 +68,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
+        android:fontFamily="@font/alfa_slab_one"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/check_box_three"
-        tools:text="Option Four"
-        android:textColor="@color/black"
-        android:fontFamily="@font/alfa_slab_one" />
-
+        tools:text="Option Four" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

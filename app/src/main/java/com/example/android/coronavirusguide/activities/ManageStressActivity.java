@@ -20,13 +20,18 @@ import com.example.android.coronavirusguide.manage_stress_fragments.ManageStress
 import com.example.android.coronavirusguide.manage_stress_fragments.ManageStressTwoFragment;
 import com.google.android.material.tabs.TabLayout;
 
+/**
+ * This class displays the Manage Stress Guide Activity Screen where the user can learn more about how to deal with the stress that resulted
+ * from this crisis in a healthy way based on the advice from the World Health Organization. The Manage Stress Guide Steps are displayed in
+ * the form of six slides/fragments that the user can scroll and swipe horizontally.
+ */
 public class ManageStressActivity extends AppCompatActivity {
 
     //Declaring and initialing a constant that represents the number of Manage Stress pages/fragments to be displayed.
     private static final int NUM_PAGES = 6;
 
     //Declaring the ViewPager widget, which handles animation and allows swiping horizontally to access previous
-    // and next manage stress steps.
+    //and next manage stress guide steps.
     private ViewPager mViewPager;
 
     @Override
@@ -40,14 +45,15 @@ public class ManageStressActivity extends AppCompatActivity {
         //Declaring and initializing the pagerAdapter, which provides the pages to the ViewPager widget.
         ManageStressAdapter pagerAdapter = new ManageStressAdapter(getSupportFragmentManager());
 
-        // Declaring and initializing the tabLayout and the finishButton object variables.
+        //Declaring and initializing the tabLayout and the finishButton object variables.
         TabLayout tabLayout = findViewById(R.id.manage_stress_indicator);
+
         Button finishButton = findViewById(R.id.manage_stress_button);
 
         //Setting the Adapter to the ViewPager through the setAdapter method.
         mViewPager.setAdapter(pagerAdapter);
 
-        // Setting up the TabLayout with the ViewPager.
+        //Setting up the TabLayout with the ViewPager.
         tabLayout.setupWithViewPager(mViewPager);
 
         //Attaching an OnClickListener to the finishButton that determines the behavior that will happen
@@ -55,6 +61,8 @@ public class ManageStressActivity extends AppCompatActivity {
         finishButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                //Finish the Current Activity
                 finish();
             }
         });
@@ -98,17 +106,17 @@ public class ManageStressActivity extends AppCompatActivity {
         @Override
         public Fragment getItem(int position) {
             switch (position) {
-                case 0: // Fragment number 1 - This will show First Manage Stress Fragment
+                case 0: // Fragment number 1 - This will show the ManageStressOneFragment
                     return new ManageStressOneFragment();
-                case 1: // Fragment number 2 - This will show Second Manage Stress Fragment
+                case 1: // Fragment number 2 - This will show the ManageStressTwoFragment
                     return new ManageStressTwoFragment();
-                case 2: // Fragment number 2 - This will show Third Manage Stress Fragment
+                case 2: // Fragment number 3 - This will show the ManageStressThreeFragment
                     return new ManageStressThreeFragment();
-                case 3: // Fragment number 2 - This will show Fourth Manage Stress Fragment
+                case 3: // Fragment number 4 - This will show the ManageStressFourFragment
                     return new ManageStressFourFragment();
-                case 4: // Fragment number 2 - This will show Fifth Manage Stress Fragment
+                case 4: // Fragment number 5 - This will show the ManageStressFiveFragment
                     return new ManageStressFiveFragment();
-                case 5: // Fragment number 2 - This will show Sixth Manage Stress Fragment
+                case 5: // Fragment number 6 - This will show the ManageStressSixFragment
                     return new ManageStressSixFragment();
                 default:
                     return null;

@@ -158,7 +158,7 @@ public class SignUpActivity extends AppCompatActivity {
                         //Declaring and initializing a userName variable that will be used in creating a Welcome Toast Message
                         String userName = userData.getUserDisplayName();
 
-                        Toast.makeText(SignUpActivity.this, userName + "! Are You Ready to join the fight against COVID-19?", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SignUpActivity.this, userName + "! Are You Ready to join the fight against the COVID-19?", Toast.LENGTH_SHORT).show();
                     }
                 }
             }

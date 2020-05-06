@@ -45,12 +45,14 @@ public class IntroductionActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
 
         //Save data changes in SharedPreferences by calling edit() method of SharedPreferences class which returns Editor class object.
-        //call putBoolean method to save a boolean value in a preference editor and Set onBoardingComplete to true
         SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        //Call putBoolean method to save a boolean value in a preference editor and Set onBoardingComplete to true
         editor.putBoolean("onBoardingComplete", true).apply();
 
         // Open the SignUpActivity by passing intent as an input argument to the startActivity method
         Intent intent = new Intent(IntroductionActivity.this, SignUpActivity.class);
+
         startActivity(intent);
 
         // Close the IntroductionActivity so that when user presses the back button, he/she won't go back to this introduction wizard

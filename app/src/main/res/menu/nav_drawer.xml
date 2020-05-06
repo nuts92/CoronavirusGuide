@@ -17,16 +17,11 @@
 
         <item
             android:id="@+id/nav_manage_stress"
-            android:title="@string/menu_manage_stress"/>
-
-        <item
-            android:id="@+id/nav_saved_quizzes"
-            android:title="@string/menu_quiz_list" />
+            android:title="@string/menu_manage_stress" />
 
         <item
             android:id="@+id/nav_common_questions"
-            android:title="@string/menu_common_questions"/>
-
+            android:title="@string/menu_common_questions" />
 
         <item
             android:id="@+id/nav_profile"

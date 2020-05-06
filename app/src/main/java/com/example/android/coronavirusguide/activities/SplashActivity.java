@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.android.coronavirusguide.R;
 
 /**
- * This activity class displays the first startup screen which appears when Coronavirus Guide App is opened.
+ * This activity class displays the first startup screen which appears when the Coronavirus Guide App is opened.
  * It is a simple constant screen for a fixed amount of time which is used to display the App Logo
  */
 public class SplashActivity extends AppCompatActivity {
@@ -31,9 +31,9 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
+
                 //Get reference of SharedPreferences object by calling getSharedPreferences (String name,int mode).
                 // This returns a SharedPreference instance pointing to the file "MyPrefs" that contains the values of preferences.
-
                 SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
 
                 // Check if onBoardingComplete from the IntroductionActivity is complete or not
@@ -49,6 +49,7 @@ public class SplashActivity extends AppCompatActivity {
                     finish();
 
                 } else {
+
                     //if onBoardingComplete is true or complete then redirect the user to the SignUpActivity
                     Intent homeIntent = new Intent(SplashActivity.this, SignUpActivity.class);
 
@@ -60,13 +61,11 @@ public class SplashActivity extends AppCompatActivity {
         }, splashTimeOut);
 
         // Declaring and initializing the animation and logo object variables
-
         Animation animation = AnimationUtils.loadAnimation(this, R.anim.transition_animation);
 
         ImageView logo = findViewById(R.id.logo);
 
         //setting and assigning the animation object to the logo ImageView object so that the logo is displayed with this animation.
         logo.setAnimation(animation);
-
     }
 }

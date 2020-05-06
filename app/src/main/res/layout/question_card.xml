@@ -60,10 +60,10 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:gravity="center"
-                tools:text="What will happen if I do that?"
                 android:textColor="@color/white"
                 android:textSize="24sp"
-                android:visibility="gone" />
+                android:visibility="gone"
+                tools:text="What will happen if I do that?" />
 
             <ImageView
                 android:id="@+id/share_button"

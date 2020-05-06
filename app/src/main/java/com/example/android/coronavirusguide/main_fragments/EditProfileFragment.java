@@ -1,4 +1,4 @@
-package com.example.android.coronavirusguide;
+package com.example.android.coronavirusguide.main_fragments;
 
 
 import android.content.ContentResolver;
@@ -9,10 +9,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavHost;
-import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
 
 import android.text.TextUtils;
 import android.util.Log;
@@ -26,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.android.coronavirusguide.R;
 import com.example.android.coronavirusguide.data_models.UserData;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -39,7 +37,6 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import static android.app.Activity.RESULT_OK;
-
 
 /**
  * EditProfileFragment subclass displays a screen where the user can update his/her photo, name, and self introduction.
@@ -77,7 +74,7 @@ public class EditProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_edit_profile, container, false);
 
-        //Initializing the mDisplayedUserPhoto, userNameEditText, and userIntroductionEditText object variables
+        //Initializing the mDisplayedUserPhoto, mUserNameEditText, and mUserIntroductionEditText Object Variables
         mDisplayedUserPhoto = rootView.findViewById(R.id.edit_user_profile_photo);
 
         mUserNameEditText = rootView.findViewById(R.id.edit_name_view);
@@ -85,11 +82,11 @@ public class EditProfileFragment extends Fragment {
         mUserIntroductionEditText = rootView.findViewById(R.id.edit_intro_view);
 
         //Declaring and initializing the updatePhotoButton and the saveProfileButton object variables
-        ImageView mUpdatePhotoButton = rootView.findViewById(R.id.edit_user_photo_picker_button);
+        ImageView updatePhotoButton = rootView.findViewById(R.id.edit_user_photo_picker_button);
 
-        Button mSaveProfileButton = rootView.findViewById(R.id.save_profile_button);
+        Button saveProfileButton = rootView.findViewById(R.id.save_profile_button);
 
-        //Declaring and Initializing an instance of FirebaseFirestore database
+        //Initializing an instance of FirebaseFirestore database
         db = FirebaseFirestore.getInstance();
 
         //Declaring and Initializing an instance of FirebaseAuth
@@ -135,26 +132,28 @@ public class EditProfileFragment extends Fragment {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
+
                 Log.e("EditProfileFragment", e.toString());
             }
         });
 
-        //Attaching an OnClickListener to the mUpdatePhotoButton that determines the behavior that will happen
+        //Attaching an OnClickListener to the updatePhotoButton that determines the behavior that will happen
         // when the user clicks on that button
-        mUpdatePhotoButton.setOnClickListener(new View.OnClickListener() {
+        updatePhotoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 openFileChooser();
             }
         });
 
-        //Attaching an OnClickListener to the mSaveProfileButton that determines the behavior that will happen
+        //Attaching an OnClickListener to the saveProfileButton that determines the behavior that will happen
         // when the user clicks on that button
-        mSaveProfileButton.setOnClickListener(new View.OnClickListener() {
+        saveProfileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                saveProfile();
 
+                saveProfile();
             }
         });
 
@@ -203,13 +202,14 @@ public class EditProfileFragment extends Fragment {
 
     /**
      * This method saves the user profile updates made by the user and stores it in the Firestore database so that the user
-     * is informed that the data is saved through a Toast message and updated in addition to closing the UpdateUserProfileActivity
+     * is informed that the data is saved through a Toast message and updated in addition to navigating back to the UserProfileFragment
      */
     private void saveProfile() {
 
         uploadImageFile();
 
         String updatedName = mUserNameEditText.getText().toString().trim();
+
         String updatedIntroduction = mUserIntroductionEditText.getText().toString().trim();
 
         if (!TextUtils.isEmpty(updatedName)) {
@@ -226,7 +226,6 @@ public class EditProfileFragment extends Fragment {
 
                         //if uploading data to database is successful
                         Log.d("EditProfileFragment", "User Data is updated and saved Successfully");
-
                     }
 
                 }).addOnFailureListener(new OnFailureListener() {
@@ -239,13 +238,11 @@ public class EditProfileFragment extends Fragment {
 
         Toast.makeText(getActivity(), "Your Profile is updated successfully", Toast.LENGTH_SHORT).show();
 
-        if(getActivity() != null) {
+        if (getActivity() != null && getView() != null) {
 
-
+            //Navigate to the UserProfileFragment
             Navigation.findNavController(getView()).navigate(R.id.action_editProfileFragment_to_nav_profile);
-
         }
-
     }
 
     /**

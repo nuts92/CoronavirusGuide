@@ -19,6 +19,10 @@ import com.example.android.coronavirusguide.symptoms_fragments.SymptomsThreeFrag
 import com.example.android.coronavirusguide.symptoms_fragments.SymptomsTwoFragment;
 import com.google.android.material.tabs.TabLayout;
 
+/**
+ * This class displays the Symptoms Activity Screen where the user can learn more about the Symptoms of the COVID-19 Virus
+ * and it displays the Symptoms in the form of five slides/fragments that the user can scroll and swipe horizontally.
+ */
 public class SymptomsActivity extends AppCompatActivity {
 
     //Declaring and initialing a constant that represents the number of symptoms' guide pages/fragments to be displayed.
@@ -39,14 +43,15 @@ public class SymptomsActivity extends AppCompatActivity {
         //Declaring and initializing the pagerAdapter, which provides the pages to the ViewPager widget.
         SymptomsAdapter pagerAdapter = new SymptomsAdapter(getSupportFragmentManager());
 
-        // Declaring and initializing the tabLayout and the finishButton object variables.
+        //Declaring and initializing the tabLayout and the finishButton object variables.
         TabLayout tabLayout = findViewById(R.id.symptoms_indicator);
+
         Button finishButton = findViewById(R.id.symptoms_button);
 
         //Setting the Adapter to the ViewPager through the setAdapter method.
         mViewPager.setAdapter(pagerAdapter);
 
-        // Setting up the TabLayout with the ViewPager.
+        //Setting up the TabLayout with the ViewPager.
         tabLayout.setupWithViewPager(mViewPager);
 
         //Attaching an OnClickListener to the finishButton that determines the behavior that will happen
@@ -54,6 +59,8 @@ public class SymptomsActivity extends AppCompatActivity {
         finishButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                //Finish the current activity
                 finish();
             }
         });
@@ -102,11 +109,11 @@ public class SymptomsActivity extends AppCompatActivity {
                     return new SymptomsOneFragment();
                 case 1: // Fragment number 2 - This will show SymptomsTwoFragment
                     return new SymptomsTwoFragment();
-                case 2: // Fragment number 1 - This will show SymptomsThreeFragment
+                case 2: // Fragment number 3 - This will show SymptomsThreeFragment
                     return new SymptomsThreeFragment();
-                case 3: // Fragment number 1 - This will show SymptomsFourFragment
+                case 3: // Fragment number 4 - This will show SymptomsFourFragment
                     return new SymptomsFourFragment();
-                case 4: // Fragment number 1 - This will show SymptomsFiveFragment
+                case 4: // Fragment number 5 - This will show SymptomsFiveFragment
                     return new SymptomsFiveFragment();
                 default:
                     return null;

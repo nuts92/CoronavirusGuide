@@ -1,4 +1,4 @@
-package com.example.android.coronavirusguide;
+package com.example.android.coronavirusguide.main_fragments;
 
 
 import android.content.Intent;
@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.android.coronavirusguide.R;
 import com.example.android.coronavirusguide.activities.SignUpActivity;
 import com.example.android.coronavirusguide.data_models.UserData;
 import com.firebase.ui.auth.AuthUI;
@@ -32,9 +33,8 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 
-
 /**
- * UserProfileFragment subclass displays the user profile information including the user photo if it exists, user name, and user
+ * UserProfileFragment subclass displays the user profile information including the user photo if it exists, user name, user email, and user
  * self introduction if it exists in addition to the log out and update profile options.
  */
 public class UserProfileFragment extends Fragment {
@@ -70,6 +70,7 @@ public class UserProfileFragment extends Fragment {
 
         mUserSelfIntroductionView = rootView.findViewById(R.id.user_self_introduction);
 
+        //Declaring and initializing the editProfileButton and logOutButton Object Variables
         Button editProfileButton = rootView.findViewById(R.id.edit_profile_button);
 
         Button logOutButton = rootView.findViewById(R.id.logout_button);
@@ -89,8 +90,8 @@ public class UserProfileFragment extends Fragment {
             userId = currentUser.getUid();
         }
 
-        //Get the User data stored in Firestore database by initializing a userDocumentReference based on the unique userId,
-        // the user data is stored in a document and the name of the document is the unique userId in a collection called "Users"
+        //Get the User data stored in Firestore database by declaring and initializing a userDocumentReference based on the unique userId,
+        //the user data is stored in a document and the name of the document is the unique userId in a collection called "Users"
         DocumentReference userDocumentReference = db.collection("Users").document(userId);
 
         //Get the user document which contains information including updated name, self introduction, photo, etc.
@@ -123,9 +124,8 @@ public class UserProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-
+                //Navigate to the EditProfileFragment
                 Navigation.findNavController(v).navigate(R.id.action_nav_profile_to_editProfileFragment);
-
             }
         });
 
@@ -142,7 +142,7 @@ public class UserProfileFragment extends Fragment {
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                 public void onComplete(@NonNull Task<Void> task) {
 
-                                    // user is now signed out
+                                    //User is now signed out
                                     startActivity(new Intent(getActivity(), SignUpActivity.class));
 
                                     // Display a Toast Message that says the user has signed out

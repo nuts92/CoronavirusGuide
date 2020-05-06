@@ -5,7 +5,6 @@
     <string name="menu_start_quiz">Test Your Knowledge</string>
     <string name="menu_symptoms">COVID-19 Symptoms</string>
     <string name="menu_prevention_guide">Prevention Guide</string>
-    <string name="menu_quiz_list">Quiz Results</string>
     <string name="menu_manage_stress">Manage Stress</string>
     <string name="menu_common_questions">Common Questions</string>
     <string name="menu_profile">Profile</string>
@@ -17,7 +16,7 @@
     <string name="continue_with_email_button">Continue with Email</string>
 
     <!-- A list of Strings for the UserProfileFragment Screen -->
-    <string name="user_profile_self_intoduction">I\'m a Fighter and believe in that this virus will make us as humanity stronger.</string>
+    <string name="user_profile_self_intoduction">I\'m a Fighter and I believe that this virus will make us as humanity stronger.</string>
     <string name="user_profile_update_button">Update</string>
     <string name="user_profile_logout_button">Log Out</string>
 
@@ -33,12 +32,7 @@
     <string name="start_quiz_button">Start the Quiz</string>
     <string name="start_quiz_title">The CoronaVirus Epidemic</string>
 
-
     <!-- A list of Strings for fragments' and activities' titles that will be used in the navigation graph so that they can be displayed-->
-    <!--    <string name="fragment_new_quiz_title">Test Your Knowledge</string>-->
-    <!--    <string name="fragment_user_profile_title">Profile</string>-->
-    <!--    <string name="prevention_guide_activity_title">Prevention Guide</string>-->
-    <!--    <string name="fragment_saved_quizzes_title">Saved Quizzes</string>-->
     <string name="fragment_edit_profile_title">Update Your Profile</string>
     <string name="fragment_questions_title">COVID-19 Quiz</string>
     <string name="fragment_result_title">Your Score</string>
@@ -50,22 +44,36 @@
     <string name="introduction_question_three">How often should I wash my hand?</string>
 
     <!-- A String for the Prevention Guide Screen -->
-    <string name="prevention_guide_button">Ok, Got It</string>
+    <string name="prevention_guide_button">OK, Got It</string>
 
     <!-- A String for the COVID-19 Symptoms Screen -->
-    <string name="symptoms_button">Ok, Got It</string>
+    <string name="symptoms_button">OK, Got It</string>
 
     <!-- A String for the Manage COVID-19 Stress Screen -->
-    <string name="manage_stress_button">Ok, Got It</string>
+    <string name="manage_stress_button">OK, Got It</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- A list of Strings for the QuestionsFragment Screen including the child fragments SingleChoiceFragment, MultipleChoiceFragment, and FreeInputFragment-->
     <string name="answer_confirm_button">Confirm</string>
     <string name="question_explanation_button">Explanation</string>
     <string name="edit_text_hint">Enter Your Answer Here</string>
+    <string name="question_score_title">Score: </string>
+    <string name="next_question">Next Question</string>
+    <string name="question_counter_title">Question:</string>
+    <string name="confirm_button_name">Confirm</string>
+    <string name="answer_required">Answer is required</string>
+    <string name="enter_your_answer">Please Enter Your Answer</string>
+    <string name="answer_correct">Your Answer is correct</string>
+    <string name="answer_incorrect">Your Answer is incorrect</string>
+    <string name="correct_answer_title">Correct Answer:</string>
+    <string name="select_two_choices">Please Select Two of the choices</string>
+    <string name="select_one_choice">Please Select One of the choices</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-
+    <!-- A list of Strings for the ResultFragment Screen-->
+    <string name="result_check_out_guide">Don\'t forget to check out our guides like this one</string>
+    <string name="super_fighter_badge_text">Congrats, You\'ve earned the COVID-19 Super Fighter Badge</string>
+    <string name="result_read_more_text">You need to read more about the COVID-19 Virus</string>
+    <string name="result_correct_answers_title">Correct Answers:</string>
+    <string name="result_incorrect_answers_title">Incorrect Answers:</string>
 
 </resources>
 

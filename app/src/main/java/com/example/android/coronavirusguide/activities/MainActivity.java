@@ -22,6 +22,7 @@ import com.example.android.coronavirusguide.data_models.UserData;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
+import com.google.common.collect.Sets;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
@@ -30,27 +31,29 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 
+/**
+ * This class displays the MainActivity Screen that appears after the user has signed in successfully to the app where the user can
+ * navigate between different sections including Test Your Knowledge, COVID-19 Symptoms, Prevention Guide, Manage Stress,
+ * Common Questions, and Profile.
+ */
 public class MainActivity extends AppCompatActivity {
 
     //Declaring all object variables
-
     private AppBarConfiguration mAppBarConfiguration;
 
-    private DrawerLayout mDrawerLayout;
+    private NavController mNavController;
+
+    private ImageView mUserDisplayedPhoto;
+
+    private TextView mUserDisplayedName;
+
+    private TextView mUserDisplayedEmail;
 
     private String userId;
 
     private FirebaseUser mCurrentUser;
 
     private DocumentReference userDocumentReference;
-
-    private ImageView userDisplayedPhoto;
-
-    private TextView userDisplayedName;
-
-    private TextView userDisplayedEmail;
-
-    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,36 +63,42 @@ public class MainActivity extends AppCompatActivity {
         //Declaring and initializing an instance of Firebase Auth
         FirebaseAuth auth = FirebaseAuth.getInstance();
 
-        //Initializing the mDrawerLayout object variable
-        mDrawerLayout = findViewById(R.id.drawer_layout);
+        //Declaring and initializing the drawerLayout object variable
+        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
 
         //Declaring and initializing the toolBar, the navigationView, and the navigationHeader object variables
-        toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
 
         NavigationView navigationView = findViewById(R.id.navigation_view);
 
         //Calling getHeaderView method on the navigationView gets the navigation header view at the specified position.
         View navigationHeader = navigationView.getHeaderView(0);
 
-        //set the toolBar to act as the ActionBar for this Activity window.
+        //Set the toolBar to act as the ActionBar for this Activity window.
         setSupportActionBar(toolbar);
 
-        // Passing each menu ID as a set of Ids because each menu should be considered as top level destinations.
+        // Initializing the mAppBarConfiguration and passing each menu ID as a set of Ids because each menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_start_quiz, R.id.nav_prevention_guide, R.id.nav_profile, R.id.nav_saved_quizzes)
-                .setOpenableLayout(mDrawerLayout)
+                R.id.nav_start_quiz, R.id.nav_prevention_guide, R.id.nav_profile)
+                .setOpenableLayout(drawerLayout)
                 .build();
 
-        NavController navController = Navigation.findNavController(this, R.id.fragment_container);
-        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        NavigationUI.setupWithNavController(navigationView, navController);
+        //Initializing the mNavController object
+        mNavController = Navigation.findNavController(this, R.id.fragment_container);
+
+        //Set up the ActionBar returned by getSupportActionBar() for use with the mNavController.
+        NavigationUI.setupActionBarWithNavController(this, mNavController, mAppBarConfiguration);
+
+        // Sets up the navigationView for use with the mNavController. This will call onNavDestinationSelected(MenuItem, NavController) when a menu item is selected.
+        // The selected item in the navigationView will automatically be updated when the destination changes.
+        NavigationUI.setupWithNavController(navigationView, mNavController);
 
         //Declaring and initializing the ImageView and the two TextViews found in the navigationHeader
-        userDisplayedPhoto = navigationHeader.findViewById(R.id.navigation_user_image);
+        mUserDisplayedPhoto = navigationHeader.findViewById(R.id.navigation_user_image);
 
-        userDisplayedName = navigationHeader.findViewById(R.id.navigation_user_name);
+        mUserDisplayedName = navigationHeader.findViewById(R.id.navigation_user_name);
 
-        userDisplayedEmail = navigationHeader.findViewById(R.id.navigation_user_email);
+        mUserDisplayedEmail = navigationHeader.findViewById(R.id.navigation_user_email);
 
         //Declaring and initializing an instance of FirebaseUser then check if the user is already signed in and not null
         mCurrentUser = auth.getCurrentUser();
@@ -148,9 +157,9 @@ public class MainActivity extends AppCompatActivity {
 
         String retrievedEmail = retrievedData.getUserEmail();
 
-        userDisplayedName.setText(retrievedName);
+        mUserDisplayedName.setText(retrievedName);
 
-        userDisplayedEmail.setText(retrievedEmail);
+        mUserDisplayedEmail.setText(retrievedEmail);
 
         //Check if there is a photo because if the user signed up with the email option which doesn't require a photo and then did not update his/her profile photo
         // the retrievedData.getUserPhoto() will return null and we will leave the default avatar to be the one displayed
@@ -158,7 +167,7 @@ public class MainActivity extends AppCompatActivity {
 
             String retrievedPhoto = retrievedData.getUserPhoto();
 
-            Glide.with(this).load(retrievedPhoto).into(userDisplayedPhoto);
+            Glide.with(this).load(retrievedPhoto).into(mUserDisplayedPhoto);
         }
     }
 
@@ -180,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
             userProfilePhoto = mCurrentUser.getPhotoUrl().toString();
         }
 
-        //Declaring and initializing a userData Object Variable that stores the user name, email, and photo if exists to be passed to the database
+        //Declaring and initializing a userData Object Variable that stores the user name, email, and photo if it exists to be passed to the database
         UserData userData = new UserData(userName, userEmail, userProfilePhoto);
 
         //Storing UserData by creating a User Document in Firestore database that will include the user name, the email, and the profile photo if it exists.
@@ -199,12 +208,15 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * This method is called whenever the user chooses to navigate Up within your application's activity hierarchy from the action bar.
+     *
+     * @return boolean: true if Up navigation completed successfully and this Activity was finished, false otherwise.
+     */
     @Override
     public boolean onSupportNavigateUp() {
         //can be global variable
-        NavController navController = Navigation.findNavController(this, R.id.fragment_container);
-        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
+        return NavigationUI.navigateUp(mNavController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
-
 }

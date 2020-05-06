@@ -4,7 +4,7 @@
     <color name="colorPrimaryDark">#3f1dcb</color>
     <color name="colorAccent">#EE4178</color>
 
-    <!-- A list of additional colors that will be used in the TrackIt App -->
+    <!-- A list of additional colors that will be used in the Coronavirus Guide App -->
     <color name="black">@android:color/black</color>
     <color name="white">@android:color/white</color>
     <color name="lightGray">#d9d9d9</color>

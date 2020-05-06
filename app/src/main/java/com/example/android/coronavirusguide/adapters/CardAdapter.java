@@ -68,7 +68,6 @@ public class CardAdapter extends FirestoreRecyclerAdapter<CommonQuestionsData, C
         return new CardHolder(view);
     }
 
-
     /**
      * This class represents a ViewHolder called CardHolder that describes an item view and metadata about its place within the RecyclerView.
      */
@@ -85,7 +84,6 @@ public class CardAdapter extends FirestoreRecyclerAdapter<CommonQuestionsData, C
 
         RelativeLayout answerLayout;
 
-
         public CardHolder(@NonNull View itemView) {
 
             super(itemView);
@@ -101,34 +99,45 @@ public class CardAdapter extends FirestoreRecyclerAdapter<CommonQuestionsData, C
 
             answerLayout = itemView.findViewById(R.id.card_answer_layout);
 
-
-            //Attaching an OnClickListener to the shareButton that determines the behavior that will happen when the user
+            //Attaching an OnClickListener to the viewButton that determines the behavior that will happen when the user
             // clicks on that button
             viewButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
                     if (answer.getVisibility() == View.GONE) {
+
                         // it's collapsed - expand it
                         answerLayout.setVisibility(View.VISIBLE);
+
                         answer.setVisibility(View.VISIBLE);
+
                         shareButton.setVisibility(View.VISIBLE);
+
                         viewButton.setImageResource(R.drawable.ic_collapse);
+
                     } else {
+
                         // it's expanded - collapse it
                         answerLayout.setVisibility(View.GONE);
-                        answer.setVisibility(View.GONE);
-                        shareButton.setVisibility(View.GONE);
-                        viewButton.setImageResource(R.drawable.ic_expand);
 
+                        answer.setVisibility(View.GONE);
+
+                        shareButton.setVisibility(View.GONE);
+
+                        viewButton.setImageResource(R.drawable.ic_expand);
                     }
 
+                    //Declaring and initializing animation object variable
                     ObjectAnimator animation = ObjectAnimator.ofInt(answer, "maxLines", answer.getMaxLines());
+
+                    //Sets the length of the animation on the animation Object and then call start()
                     animation.setDuration(200).start();
-                    //does we need animate shareButton
                 }
             });
 
+            //Attaching an OnClickListener to the shareButton that determines the behavior that will happen when the user
+            // clicks on that button
             shareButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -136,26 +145,21 @@ public class CardAdapter extends FirestoreRecyclerAdapter<CommonQuestionsData, C
                     //Get the Adapter position of the item represented by this CardHolder
                     int position = getAdapterPosition();
 
-
                     //call onItemClick method on the mListener and pass the position along with the documentSnapshot to the fragment because
-                    //from the documentSnapshot we will recreate the whole Saved Game object, and get from it the data to create the message
-                    // that will be shared
-
+                    //from the documentSnapshot we will recreate the whole CommonQuestionsData object, and get from it the data to create the message
+                    //that will be shared
                     if (position != RecyclerView.NO_POSITION && mListener != null) {
 
                         mListener.onItemClick(getSnapshots().getSnapshot(position), position);
-
                     }
-
                 }
             });
         }
-
     }
 
     /**
      * This interface will be used to send data from the adapter to the underlying activity or fragment that implements this interface
-     * It will be implemented in the SavedGamesFragment that displays the Saved Games' Cards.
+     * It will be implemented in the CommonQuestionsFragment that displays the Common Questions' Cards.
      */
     public interface OnItemClickListener {
 
@@ -163,7 +167,7 @@ public class CardAdapter extends FirestoreRecyclerAdapter<CommonQuestionsData, C
     }
 
     /**
-     * This method will be used in the SavedGamesFragment to set the OnItemClickListener to the CardAdapter
+     * This method will be used in the CommonQuestionsFragment to set the OnItemClickListener to the CardAdapter
      *
      * @param listener CardAdapter.OnItemClickListener as an input parameter
      */
@@ -171,5 +175,4 @@ public class CardAdapter extends FirestoreRecyclerAdapter<CommonQuestionsData, C
 
         mListener = listener;
     }
-
 }

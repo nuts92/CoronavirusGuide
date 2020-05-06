@@ -1,5 +1,10 @@
-package com.example.android.coronavirusguide;
+package com.example.android.coronavirusguide.data_models;
 
+/**
+ * This class is a Data Model Class that stores the Result Data and it stores whether the question is answered or not and whether the result is
+ * correct or incorrect. Additionally, based on the result the userAnswerConfirmation and correctAnswerMessage store different values that are
+ * going to be displayed when the user clicks on the confirm button.
+ */
 public class Result {
 
     private boolean isCorrect;

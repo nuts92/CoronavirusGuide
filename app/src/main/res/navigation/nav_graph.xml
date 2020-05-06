@@ -7,13 +7,14 @@
 
     <fragment
         android:id="@id/nav_start_quiz"
-        android:name="com.example.android.coronavirusguide.StartQuizFragment"
+        android:name="com.example.android.coronavirusguide.main_fragments.StartQuizFragment"
         android:label="@string/menu_start_quiz"
         tools:layout="@layout/fragment_start_quiz">
 
         <action
             android:id="@+id/action_nav_start_quiz_to_questionsFragment"
             app:destination="@id/questionsFragment" />
+
     </fragment>
 
     <activity
@@ -36,35 +37,39 @@
 
     <fragment
         android:id="@id/nav_common_questions"
-        android:name="com.example.android.coronavirusguide.CommonQuestionsFragment"
+        android:name="com.example.android.coronavirusguide.main_fragments.CommonQuestionsFragment"
         android:label="@string/menu_common_questions"
         tools:layout="@layout/fragment_common_questions" />
 
     <fragment
         android:id="@id/nav_profile"
-        android:name="com.example.android.coronavirusguide.UserProfileFragment"
+        android:name="com.example.android.coronavirusguide.main_fragments.UserProfileFragment"
         android:label="@string/menu_profile"
         tools:layout="@layout/fragment_user_profile">
+
         <action
             android:id="@+id/action_nav_profile_to_editProfileFragment"
             app:destination="@id/editProfileFragment" />
+
     </fragment>
 
     <fragment
         android:id="@+id/editProfileFragment"
-        android:name="com.example.android.coronavirusguide.EditProfileFragment"
+        android:name="com.example.android.coronavirusguide.main_fragments.EditProfileFragment"
         android:label="@string/fragment_edit_profile_title"
         tools:layout="@layout/fragment_edit_profile">
+
         <action
             android:id="@+id/action_editProfileFragment_to_nav_profile"
             app:destination="@id/nav_profile"
             app:popUpTo="@+id/editProfileFragment"
             app:popUpToInclusive="true" />
+
     </fragment>
 
     <fragment
         android:id="@+id/questionsFragment"
-        android:name="com.example.android.coronavirusguide.QuestionsFragment"
+        android:name="com.example.android.coronavirusguide.quiz_flow_fragments.QuestionsFragment"
         android:label="@string/fragment_questions_title"
         tools:layout="@layout/fragment_questions">
 
@@ -78,15 +83,20 @@
 
     <fragment
         android:id="@+id/resultFragment"
-        android:name="com.example.android.coronavirusguide.ResultFragment"
+        android:name="com.example.android.coronavirusguide.quiz_flow_fragments.ResultFragment"
         android:label="@string/fragment_result_title"
         tools:layout="@layout/fragment_result">
+
         <action
             android:id="@+id/action_resultFragment_to_nav_start_quiz"
             app:destination="@id/nav_start_quiz"
             app:popUpTo="@+id/resultFragment"
             app:popUpToInclusive="true" />
-    </fragment>
 
+        <action
+            android:id="@+id/action_resultFragment_to_nav_prevention_guide"
+            app:destination="@id/nav_prevention_guide" />
+
+    </fragment>
 
 </navigation>
