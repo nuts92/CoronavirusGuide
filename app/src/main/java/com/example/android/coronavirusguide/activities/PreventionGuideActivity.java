@@ -6,11 +6,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
 import com.example.android.coronavirusguide.R;
 import com.example.android.coronavirusguide.prevention_guide_fragments.PreventionEightFragment;
 import com.example.android.coronavirusguide.prevention_guide_fragments.PreventionFiveFragment;

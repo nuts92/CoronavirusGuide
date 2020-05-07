@@ -1,17 +1,13 @@
 package com.example.android.coronavirusguide.quiz_flow_fragments;
 
-
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-
 import com.example.android.coronavirusguide.R;
 import com.example.android.coronavirusguide.data_models.Result;
 import com.example.android.coronavirusguide.interfaces.QuestionResponse;

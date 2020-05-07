@@ -1,16 +1,13 @@
 package com.example.android.coronavirusguide.quiz_flow_fragments;
 
-
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
-
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,7 +19,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.android.coronavirusguide.R;
 import com.example.android.coronavirusguide.data_models.QuizData;
 import com.example.android.coronavirusguide.data_models.Result;
@@ -33,8 +29,6 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
-
-import java.util.Set;
 
 /**
  * QuestionsFragment subclass displays the Quiz Questions along with the explanation button, the confirm button, the score, the question counter,
