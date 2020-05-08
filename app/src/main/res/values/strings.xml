@@ -53,12 +53,11 @@
     <string name="manage_stress_button">OK, Got It</string>
 
     <!-- A list of Strings for the QuestionsFragment Screen including the child fragments SingleChoiceFragment, MultipleChoiceFragment, and FreeInputFragment-->
-    <string name="answer_confirm_button">Confirm</string>
     <string name="question_explanation_button">Explanation</string>
     <string name="edit_text_hint">Enter Your Answer Here</string>
-    <string name="question_score_title">Score: </string>
+    <string name="question_score_title">Score: %d</string>
     <string name="next_question">Next Question</string>
-    <string name="question_counter_title">Question:</string>
+    <string name="question_counter_title">Question: %d / %d</string>
     <string name="confirm_button_name">Confirm</string>
     <string name="answer_required">Answer is required</string>
     <string name="enter_your_answer">Please Enter Your Answer</string>
@@ -72,8 +71,8 @@
     <string name="result_check_out_guide">Don\'t forget to check out our guides like this one</string>
     <string name="super_fighter_badge_text">Congrats, You\'ve earned the COVID-19 Super Fighter Badge</string>
     <string name="result_read_more_text">You need to read more about the COVID-19 Virus</string>
-    <string name="result_correct_answers_title">Correct Answers:</string>
-    <string name="result_incorrect_answers_title">Incorrect Answers:</string>
+    <string name="result_correct_answers_title">Correct Answers: %d</string>
+    <string name="result_incorrect_answers_title">Incorrect Answers: %d</string>
 
 </resources>
 

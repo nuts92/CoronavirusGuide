@@ -1,6 +1,7 @@
 package com.example.android.coronavirusguide.quiz_flow_fragments;
 
 import android.os.Bundle;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import android.text.TextUtils;
 import android.util.Log;
@@ -29,6 +30,14 @@ public class FreeInputFragment extends Fragment implements QuestionResponse {
 
     public FreeInputFragment() {
         // Required empty public constructor
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        //Control whether a fragment instance is retained across Activity re-creation (such as from a configuration change).
+        setRetainInstance(true);
     }
 
     @Override

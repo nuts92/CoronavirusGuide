@@ -115,7 +115,7 @@
         android:paddingEnd="16dp"
         android:paddingRight="16dp"
         android:paddingBottom="8dp"
-        android:text="@string/answer_confirm_button"
+        android:text="@string/confirm_button_name"
         android:textColor="@color/white"
         android:textSize="16sp"
         app:autoSizeTextType="uniform"

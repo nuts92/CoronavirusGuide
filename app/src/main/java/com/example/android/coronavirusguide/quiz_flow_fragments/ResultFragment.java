@@ -43,23 +43,25 @@ public class ResultFragment extends Fragment {
 
         Button preventionGuideButton = rootView.findViewById(R.id.result_prevetion_guide_button);
 
-        //Declaring and initializing the score and totalQuestions variables
+        //Declaring and initializing the score, totalQuestions and inCorrectAnswers variables
         int score = 0;
 
         int totalQuestions = 0;
 
-        //If there are arguments supplied when the fragment was instantiated, then update the score and totalQuestions variables values
+        int inCorrectAnswers = 0;
+
+        //If there are arguments supplied when the fragment was instantiated, then update the score, totalQuestions and inCorrectAnswers variables values
         if (getArguments() != null) {
 
             score = getArguments().getInt("score");
 
             totalQuestions = getArguments().getInt("total questions");
+
+            inCorrectAnswers = getArguments().getInt("inCorrectAnswers");
         }
 
-        //Declaring and initializing the correctAnswers and inCorrectAnswers variables
+        //Declaring and initializing the correctAnswers variable
         int correctAnswers = score;
-
-        int inCorrectAnswers = totalQuestions - score;
 
         //Display different animation and text in the resultAnimation and resultTitle views based on the comparison of the
         //correct answers to the incorrect ones.
@@ -81,11 +83,11 @@ public class ResultFragment extends Fragment {
             resultTitle.setText(getString(R.string.result_read_more_text));
         }
 
-        resultScoreView.setText(getString(R.string.question_score_title) + " " + score + "/" + totalQuestions);
+        resultScoreView.setText(getString(R.string.question_score_title, score) + "/" + totalQuestions);
 
-        correctAnswersView.setText(getString(R.string.result_correct_answers_title) + " " + correctAnswers);
+        correctAnswersView.setText(getString(R.string.result_correct_answers_title, correctAnswers));
 
-        inCorrectAnswersView.setText(getString(R.string.result_incorrect_answers_title) + " " + inCorrectAnswers);
+        inCorrectAnswersView.setText(getString(R.string.result_incorrect_answers_title, inCorrectAnswers));
 
         //Attaching an OnClickListener to the preventionGuideButton that determines the behavior that will happen when the user
         //clicks on that button

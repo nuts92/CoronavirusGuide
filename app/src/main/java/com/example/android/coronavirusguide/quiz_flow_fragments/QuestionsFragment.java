@@ -42,6 +42,8 @@ public class QuestionsFragment extends Fragment {
 
     private int totalQuestions;
 
+    private int inCorrectAnswers;
+
     private int currentQuestion;
 
     private int state;
@@ -64,6 +66,8 @@ public class QuestionsFragment extends Fragment {
 
     private QuestionResponse questionResponse;
 
+    private Result result;
+
     public QuestionsFragment() {
         // Required empty public constructor
     }
@@ -72,8 +76,11 @@ public class QuestionsFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //Initializing the score variable to a value of 0
+        //Initializing the score variable which represents the correct answers to a value of 0
         score = 0;
+
+        //Initializing the inCorrectAnswers variable to a value of 0
+        inCorrectAnswers = 0;
 
         //Initializing the currentQuestion variable to a value of 1
         currentQuestion = 1;
@@ -102,6 +109,28 @@ public class QuestionsFragment extends Fragment {
                 if (queryDocumentSnapshots != null) {
 
                     totalQuestions = queryDocumentSnapshots.getDocuments().size();
+
+                    mQuestionsCountView.setText(getString(R.string.question_counter_title, currentQuestion, totalQuestions));
+                }
+            }
+        });
+
+        //Displaying the first question when the QuestionsFragment opens by retrieving the data of this question from Firestore database.
+        //The collection in Firestore is called "Quiz" and each document inside it represents a question and the document is named after the
+        //question number so question one document is called 1 and question two document is called 2, etc.
+        db.collection("Quiz").document("" + currentQuestion).addSnapshotListener(new EventListener<DocumentSnapshot>() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+
+                if (documentSnapshot != null) {
+
+                    QuizData quizData = documentSnapshot.toObject(QuizData.class);
+
+                    if (quizData != null) {
+
+                        setUpQuestion(quizData);
+                    }
                 }
             }
         });
@@ -128,6 +157,56 @@ public class QuestionsFragment extends Fragment {
 
         mCorrectAnswerView = rootView.findViewById(R.id.correct_answer);
 
+        //Displaying the current score and the current question in the scoreView and questionsCountView object variables
+        mScoreView.setText(getString(R.string.question_score_title, score));
+
+        mQuestionsCountView.setText(getString(R.string.question_counter_title, currentQuestion, totalQuestions));
+
+        //if state is 0 then the confirm button text will be confirm and will display a message for the user about answering the question
+        //if state is 1 then the confirm button text will be  next question and display whether the answer is correct or not
+        //This code takes care of Screen Rotation scenario
+        if (state == 0) {
+
+            mConfirmButton.setText(getString(R.string.confirm_button_name));
+
+            if (result != null && !result.isAnswered()) {
+
+                mUserAnswerConfirmation.setVisibility(View.INVISIBLE);
+
+                mUserAnswerConfirmation.setVisibility(View.VISIBLE);
+
+                mUserAnswerConfirmation.setText(result.getUserAnswerConfirmation());
+            }
+
+        } else {
+
+            mConfirmButton.setText(getString(R.string.next_question));
+
+            if (result != null) {
+
+                if (result.isCorrect()) {
+
+                    mUserAnswerConfirmation.setVisibility(View.VISIBLE);
+
+                    mUserAnswerConfirmation.setText(result.getUserAnswerConfirmation());
+
+                    mConfirmButton.setText(getString(R.string.next_question));
+
+                    mScoreView.setText(getString(R.string.question_score_title, score));
+
+                } else {
+
+                    mUserAnswerConfirmation.setVisibility(View.VISIBLE);
+
+                    mCorrectAnswerView.setVisibility(View.VISIBLE);
+
+                    mUserAnswerConfirmation.setText(result.getUserAnswerConfirmation());
+
+                    mCorrectAnswerView.setText(result.getCorrectAnswerMessage());
+                }
+            }
+        }
+
         //Declaring and Initializing explanationButton Object Variable
         Button explanationButton = rootView.findViewById(R.id.explanation_button);
 
@@ -138,31 +217,6 @@ public class QuestionsFragment extends Fragment {
             public void onClick(View v) {
 
                 displayExplanation();
-            }
-        });
-
-        //Displaying the first question when the QuestionsFragment opens by retrieving the data of this question from Firestore database.
-        //Additionally, displaying the current score and the current question in the scoreView and questionsCountView object variables
-        //The collection in Firestore is called "Quiz" and each document inside it represents a question and the document is named after the
-        //question number so question one document is called 1 and question two document is called 2, etc.
-        db.collection("Quiz").document("" + currentQuestion).addSnapshotListener(new EventListener<DocumentSnapshot>() {
-            @SuppressLint("SetTextI18n")
-            @Override
-            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-
-                if (documentSnapshot != null) {
-
-                    QuizData quizData = documentSnapshot.toObject(QuizData.class);
-
-                    if (quizData != null) {
-
-                        mScoreView.setText(getString(R.string.question_score_title) + " " + score);
-
-                        mQuestionsCountView.setText(getString(R.string.question_counter_title) + currentQuestion + "/" + totalQuestions);
-
-                        setUpQuestion(quizData);
-                    }
-                }
             }
         });
 
@@ -187,7 +241,6 @@ public class QuestionsFragment extends Fragment {
      *
      * @param v View: The view or button that is being clicked on in this case the mConfirmButton
      */
-    @SuppressLint("SetTextI18n")
     private void setUpButtonLogic(View v) {
 
         final View view = v;
@@ -195,7 +248,7 @@ public class QuestionsFragment extends Fragment {
         if (state == 0) {
 
             //Check the user answer by calling checkAnswer() method on questionResponse which will return a result object variable
-            Result result = questionResponse.checkAnswer();
+            result = questionResponse.checkAnswer();
 
             //Declaring and initializing animation object variable
             Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.fragment_open_enter);
@@ -230,7 +283,7 @@ public class QuestionsFragment extends Fragment {
 
                 score++;
 
-                mScoreView.setText(getString(R.string.question_score_title) + " " + score);
+                mScoreView.setText(getString(R.string.question_score_title, score));
 
             } else {
 
@@ -248,6 +301,8 @@ public class QuestionsFragment extends Fragment {
 
                 mCorrectAnswerView.setText(result.getCorrectAnswerMessage());
 
+                inCorrectAnswers++;
+
                 mConfirmButton.setText(getString(R.string.next_question));
             }
 
@@ -264,7 +319,7 @@ public class QuestionsFragment extends Fragment {
             //"Next Question" button, don't display the currentQuestion which will be increased by one to 10
             if (currentQuestion <= totalQuestions) {
 
-                mQuestionsCountView.setText(getString(R.string.question_counter_title) + currentQuestion + "/" + totalQuestions);
+                mQuestionsCountView.setText(getString(R.string.question_counter_title, currentQuestion, totalQuestions));
             }
 
             //Retrieving the data of the question to be displayed from the Firestore database
@@ -300,6 +355,8 @@ public class QuestionsFragment extends Fragment {
                             args.putInt("score", score);
 
                             args.putInt("total questions", totalQuestions);
+
+                            args.putInt("inCorrectAnswers", inCorrectAnswers);
 
                             Toast.makeText(getActivity(), "Your Final Score is " + score, Toast.LENGTH_SHORT).show();
 
